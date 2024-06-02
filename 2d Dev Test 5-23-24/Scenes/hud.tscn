@@ -1,0 +1,116 @@
+[gd_scene load_steps=2 format=3 uid="uid://wrsx6scd14p1"]
+
+[ext_resource type="Script" path="res://Scenes/hud.gd" id="1_0jq23"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0jq23")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bottom" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="bottom2" type="HBoxContainer" parent="MarginContainer/bottom"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="left" type="HBoxContainer" parent="MarginContainer/bottom/bottom2"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Control" type="Control" parent="MarginContainer/bottom/bottom2/left"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="health" type="Label" parent="MarginContainer/bottom/bottom2/left"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "Health: 0"
+
+[node name="emeralds" type="Label" parent="MarginContainer/bottom/bottom2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0.764706, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "Emeralds: 0"
+vertical_alignment = 2
+
+[node name="Control2" type="Control" parent="MarginContainer/bottom/bottom2"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/bottom"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="top" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="bottom" type="HBoxContainer" parent="MarginContainer/top"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="left" type="HBoxContainer" parent="MarginContainer/top/bottom"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Control" type="Control" parent="MarginContainer/top/bottom/left"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="bombs" type="Label" parent="MarginContainer/top/bottom/left"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "Bombs: 0"
+
+[node name="flares" type="Label" parent="MarginContainer/top/bottom"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.482353, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "Flares: 0"
+vertical_alignment = 2
+
+[node name="Control2" type="Control" parent="MarginContainer/top/bottom"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/top"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2

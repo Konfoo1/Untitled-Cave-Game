@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgdaswyjf1y4j"]
+
+[ext_resource type="Texture2D" uid="uid://g7lnpp7u66bq" path="res://assets/TileMapColors.png" id="1_4a6lh"]
+[ext_resource type="Texture2D" uid="uid://cvlioeb6xew12" path="res://assets/shopkeeper.png" id="2_0701s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x7uem"]
+resource_name = "Tilemap"
+texture = ExtResource("1_4a6lh")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+5:0/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_h5748"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_x7uem")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmvet"]
+radius = 4.12311
+
+[node name="Shop" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_h5748")
+rendering_quadrant_size = 8
+format = 2
+layer_0/name = "Border"
+layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 0, 131072, 131072, 0, 196608, 131072, 0, 262144, 131072, 0, 327680, 131072, 0, 393216, 131072, 0, 393217, 131072, 0, 393218, 131072, 0, 393219, 131072, 0, 393220, 131072, 0, 393221, 131072, 0, 393222, 131072, 0, 393223, 131072, 0, 327687, 131072, 0, 262151, 131072, 0, 196615, 131072, 0, 131079, 131072, 0, 65543, 131072, 0, 7, 131072, 0, 6, 131072, 0, 5, 131072, 0, 4, 131072, 0, 3, 131072, 0, 2, 131072, 0, 1, 131072, 0, 65537, 65536, 0, 131073, 65536, 0, 196609, 65536, 0, 196610, 65536, 0, 262146, 65536, 0, 327682, 65536, 0, 327683, 65536, 0, 327681, 65536, 0, 262145, 65536, 0, 262147, 65536, 0, 262148, 65536, 0, 327684, 65536, 0, 327685, 65536, 0, 327686, 65536, 0, 262150, 65536, 0, 196614, 65536, 0, 131078, 65536, 0, 65542, 65536, 0, 65541, 65536, 0, 65540, 65536, 0, 65539, 65536, 0, 65538, 65536, 0, 131074, 65536, 0, 196611, 65536, 0, 196612, 65536, 0, 131076, 65536, 0, 131077, 65536, 0, 131075, 65536, 0, 196613, 65536, 0, 262149, 65536, 0)
+layer_1/name = "Ground"
+layer_1/tile_data = PackedInt32Array()
+
+[node name="Player" type="Node2D" parent="TileMap"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(51, 28)
+texture = ExtResource("2_0701s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(51, 29)
+shape = SubResource("CircleShape2D_wmvet")

@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://gxvy6imrimi5"]
+
+[ext_resource type="Texture2D" uid="uid://dv5gml6dcfqfn" path="res://assets/arrow_bullet.png" id="1_7ypkf"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_ijp22"]
+
+[sub_resource type="Gradient" id="Gradient_npgk8"]
+offsets = PackedFloat32Array(0, 0.414141)
+colors = PackedColorArray(1, 0.65098, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_asj21"]
+gradient = SubResource("Gradient_npgk8")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_fwcfc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.326531, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5nc3x"]
+curve = SubResource("Curve_fwcfc")
+
+[sub_resource type="Gradient" id="Gradient_a1582"]
+offsets = PackedFloat32Array(0, 0.541209)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_63ido"]
+gradient = SubResource("Gradient_a1582")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4fco2"]
+gradient = SubResource("Gradient_a1582")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x0tjs"]
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 42.86
+initial_velocity_max = 83.28
+gravity = Vector3(0, 98, 0)
+scale_min = 0.25
+color = Color(1, 1, 0, 1)
+color_ramp = SubResource("GradientTexture1D_4fco2")
+color_initial_ramp = SubResource("GradientTexture1D_63ido")
+alpha_curve = SubResource("CurveTexture_5nc3x")
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ijp22")
+speed = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, 0)
+texture = ExtResource("1_7ypkf")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+color = Color(0.964706, 0.631373, 0.00392157, 1)
+texture = SubResource("GradientTexture2D_asj21")
+texture_scale = 2.08
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-1, 0)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_x0tjs")
+lifetime = 0.25
+
+[node name="Bullet" type="Area2D" parent="."]
+position = Vector2(2, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bullet"]
+position = Vector2(-3, 0)
+polygon = PackedVector2Array(-2, 0, -2, -1, 0, -1, 0, -2, 1, -2, 1, -1, 2, -1, 2, 0, 1, 0, 1, 1, 0, 1, 0, 0)
+
+[connection signal="area_entered" from="Bullet" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Bullet" to="." method="_on_area_2d_body_entered"]

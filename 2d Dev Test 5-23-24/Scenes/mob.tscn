@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmiw2vvufw5ve"]
+
+[ext_resource type="Script" path="res://Scenes/mob.gd" id="1_6v8m5"]
+[ext_resource type="Texture2D" uid="uid://cc3exid87kefx" path="res://assets/enemy.png" id="2_hamuc"]
+[ext_resource type="PackedScene" uid="uid://ce7y1jrflcg8n" path="res://Tool Nodes/health_system.tscn" id="3_s1d54"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brmr1"]
+size = Vector2(6, 6)
+
+[node name="Mob" type="CharacterBody2D"]
+script = ExtResource("1_6v8m5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hamuc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_brmr1")
+
+[node name="hurt_timer" type="Timer" parent="."]
+
+[node name="health_system" parent="." instance=ExtResource("3_s1d54")]
+starting_health = 0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[connection signal="timeout" from="hurt_timer" to="." method="_on_hurt_timer_timeout"]
+[connection signal="damaged" from="health_system" to="." method="_on_health_system_damaged"]
+[connection signal="dead" from="health_system" to="." method="_on_health_system_dead"]
