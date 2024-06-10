@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://c54rbpqf8pw11"]
+
+[sub_resource type="Curve" id="Curve_1ijnc"]
+max_value = 1.55
+bake_resolution = 500
+_data = [Vector2(0, 1.55), 0.0, 0.0, 0, 0, Vector2(0.706633, 1.3627), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4duwn"]
+curve = SubResource("Curve_1ijnc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_holft"]
+lifetime_randomness = 0.5
+angle_min = -360.0
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 60.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 0, 0)
+color = Color(1, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_4duwn")
+hue_variation_min = -1.0
+hue_variation_max = -0.85
+turbulence_noise_scale = 2.765
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+collision_use_scale = true
+
+[sub_resource type="Gradient" id="Gradient_55wwo"]
+offsets = PackedFloat32Array(0, 0.0176768)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ftjo0"]
+gradient = SubResource("Gradient_55wwo")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Explosion" type="GPUParticles2D"]
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_holft")
+texture = SubResource("GradientTexture2D_ftjo0")
+one_shot = true
+explosiveness = 1.0

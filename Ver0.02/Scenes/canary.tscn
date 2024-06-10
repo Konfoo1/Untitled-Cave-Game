@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://bobfeja207161"]
+
+[ext_resource type="Texture2D" uid="uid://dl5a2padey8hk" path="res://assets/Canary.png" id="1_47onc"]
+[ext_resource type="Script" path="res://Scripts/canary.gd" id="2_q24uk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqo2r"]
+atlas = ExtResource("1_47onc")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcrp0"]
+atlas = ExtResource("1_47onc")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnbvg"]
+atlas = ExtResource("1_47onc")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1ark"]
+atlas = ExtResource("1_47onc")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkt3u"]
+atlas = ExtResource("1_47onc")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk0sh"]
+atlas = ExtResource("1_47onc")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wmc0g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqo2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcrp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnbvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1ark")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkt3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk0sh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="Canary" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_wmc0g")
+frame_progress = 0.924551
+script = ExtResource("2_q24uk")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://4jbyqama6aqx"]
+
+[ext_resource type="Script" path="res://Scripts/Emerald.gd" id="1_innks"]
+[ext_resource type="Texture2D" uid="uid://b6dn6p25hjuks" path="res://assets/emerald.png" id="2_4o4no"]
+
+[sub_resource type="Gradient" id="Gradient_mpqdu"]
+offsets = PackedFloat32Array(0, 0.151515, 0.381313, 0.489899, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.00302064, 0.00302064, 0.00302064, 0.00302064, 0, 0, 0, 0, 0.0762712, 0.0762712, 0.0762712, 0.0762712)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wtjdg"]
+gradient = SubResource("Gradient_mpqdu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iwwti"]
+radius = 6.08276
+
+[node name="Emerald" type="Node2D"]
+script = ExtResource("1_innks")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0, 0.74902, 0.0823529, 1)
+texture = SubResource("GradientTexture2D_wtjdg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4o4no")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_iwwti")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
